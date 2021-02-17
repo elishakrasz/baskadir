@@ -2,29 +2,22 @@ backend:
   name: git-gateway
   branch: master
 
-publish_mode: editorial_workflow
 media_folder: static/img
 public_folder: /img
 
 collections:
-  -name: "product"
-   label: "Product"
-   folder: "products"
-   create: "true"
-   slug: "{{year}}-{{month}}-{{day}}-{{slug}}" 
-   media_folder: ''
-   public_folder: ''
-   path: '{{title}}/index'
-   editor:
-    preview: true
-   fields:
-    - { label: "Products", name: "products", widget: "hidden", default: "product" }
-    - { label: "Categories", name: "categories", widget: "list", allow_add: true, field: {label: "Category", name: "category", widget: "string" }}
-    - { label: "Price", name: "price", widget: "number" }
-    - { label: "Name", name: "name", widget: "string" }
-    - { label: "Image", name: "image", widget: "image" }
-    - { label: "Description", name: "description", widget: "text" }
-    - { label: "Inventory", name: "currentIventory", widget: "number" }
-    - { label: "Brand", name: "brand", widget: "string" }
-
-
+  - name: 'blog'
+    label: 'Blog'
+    folder: 'content/blog'
+    create: true
+    slug: 'index'
+    media_folder: ''
+    public_folder: ''
+    path: '{{title}}/index'
+    editor:
+      preview: false
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+      - { label: 'Description', name: 'description', widget: 'string' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
