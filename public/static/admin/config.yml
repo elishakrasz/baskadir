@@ -1,24 +1,20 @@
 backend:
   name: git-gateway
-  branch: master # Branch to update (optional; defaults to master)
+  branch: master 
 
-publish_mode: editorial_workflow
-media_folder: "static/images/uploads" 
+media_folder: "images/uploads" 
 public_folder: "/images/uploads" 
 
 collections:
-  -name: "product"
-   label: "Product"
-   folder: "products"
-   create: "true"
-   slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
-   fields:
-    - { label: "Products", name: "products", widget: "hidden", default: "product" }
-    - { label: "Categories", name: "categories", widget: "list", allow_add: true, field: {label: "Category", name: "category", widget: "string" }}
-    - { label: "Price", name: "price", widget: "number" }
-    - { label: "Name", name: "name", widget: "string" }
-    - { label: "Image", name: "image", widget: "image" }
-    - { label: "Description", name: "description", widget: "text" }
-    - { label: "Inventory", name: "currentIventory", widget: "number" }
-    - { label: "Brand", name: "brand", widget: "string" }
-
+  - name: "blog" # Used in routes, e.g., /admin/collections/blog
+    label: "Blog" # Used in the UI
+    folder: "_posts/blog" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - {label: "Layout", name: "layout", widget: "hidden", default: "blog"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Featured Image", name: "thumbnail", widget: "image"}
+      - {label: "Rating (scale of 1-5)", name: "rating", widget: "number"}
+      - {label: "Body", name: "body", widget: "markdown"}
